@@ -1,10 +1,26 @@
+buildscript {
+  ext {
+    springBootVersion = '1.3.3.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+
 allprojects {
   group = 'io.github.janahrens'
-  version = '0.0.1'
 }
 
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'spring-boot' 
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
   repositories {
     mavenCentral()
   }
