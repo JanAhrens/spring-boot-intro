@@ -1,0 +1,11 @@
+allprojects {
+  group = 'io.github.janahrens'
+  version = '0.0.1'
+}
+
+subprojects {
+  apply plugin: 'java'
+  repositories {
+    mavenCentral()
+  }
+}

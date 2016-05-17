@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <style>
+        .current-fragment.green {
+            color: #17ff2e;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>Introduction to Spring <span class="fragment">Boot</span></h3>
+        </section>
+
+        <section>
+            <h3>Recap: patterns and principles</h3>
+        </section>
+
+        <section>
+            <h3>Dependency injection (DI)</h3>
+            <p class="fragment">Also known as <strong>inversion of control</strong> (IoC)</p>
+            <p class="fragment">Hollywood principle: "Don't call us, we call you"</p>
+        </section>
+
+        <section>
+            <h3>Dependency injection (DI)</h3>
+            <code data-trim data-noescape>
+                <pre>
+class Demo {
+    private final Foobar foobar;
+
+    public Demo() {
+        foobar = new Foobar(); <span class="fragment green">// dependency NOT injected</span>
+    }
+
+    public void doStuff() {
+        foobar.doStuff();
+    }
+}
+    </pre>
+            </code>
+        </section>
+
+        <section>
+            <h3>Dependency injection (DI)</h3>
+            <code data-trim data-noescape><pre>
+class Demo {
+    private final Foobar foobar;
+
+    public Demo(Foobar foobar) {  <span class="fragment green">// dependency injection</span>
+        this.foobar = foobar;
+    }
+
+    public void doStuff() {
+        foobar.doStuff();
+    }
+}
+    </pre>
+            </code>
+        </section>
+
+        <section>
+            <h3>Benefits of DI</h3>
+            <p class="fragment">Modularization</p>
+            <p class="fragment">Testable code</p>
+            <p class="fragment">Decrease coupling</p>
+            <p class="fragment">Behavior can be changed</p>
+        </section>
+
+        <section>
+            <h3>Aspect oriented programming (AOP)</h3>
+            <p class="fragment">Separate cross-cutting concerns</p>
+            <p class="fragment">In plain English: reduce duplications</p>
+        </section>
+
+        <section>
+            <h3>AOP</h3>
+            <code data-trim data-noescape><pre>
+class BookController {
+
+    <span class="fragment green">private final UserService userService;
+
+    // ...</span>
+
+    public Response index(Request request) {
+        <span class="fragment green">if (userService.isAuthenticated(request) {
+            // ...
+        } else {
+            return Response.unauthorized();
+        }</span>
+    }
+
+    public Response get(Request request) {
+        <span class="fragment green">if (userService.isAuthenticated(request) {
+            // ...
+        } else {
+            return Response.unauthorized();
+        }</span>
+    }
+
+}
+    </pre>
+            </code>
+        </section>
+
+        <section>
+            <h3>AOP</h3>
+            <code data-trim data-noescape><pre>
+class BookController {
+
+    <span class="fragment green" data-fragment-index="1">@Authenticated</span>
+    public Response index(Request request) {
+        // ...
+    }
+
+    <span class="fragment green" data-fragment-index="1">@Authenticated</span>
+    public Response get(Request request) {
+        // ...
+    }
+
+}
+    </pre>
+            </code>
+        </section>
+
+        <section>
+            <h3>The Spring Framework</h3>
+            <p><a href="https://spring.io/" target="_blank">spring.io</a></p>
+        </section>
+
+        <section>
+            <h3>The Spring Framework</h3>
+            <p>IoC container</p>
+            <p class="fragment">Spring AOP framework</p>
+        </section>
+
+        <section>
+            <h3>The Spring Framework</h3>
+            <p>XML based configuration</p>
+            <p class="fragment">Lots of boilerplate code</p>
+        </section>
+
+        <section>
+            <h3>Spring Boot</h3>
+            <p><a href="https://projects.spring.io/spring-boot" target="_blank">projects.spring.io/spring-boot</a></p>
+        </section>
+
+        <section>
+            <h3>Spring Boot</h3>
+            <p>Convention over configuration</p>
+            <p class="fragment">Easily extensible through "Starter POMs"</p>
+            <p class="fragment">Micro-framework paradigm</p>
+        </section>
+
+        <section>
+            <img src="spring-boot-tweet.png">
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                [].forEach.call(document.querySelectorAll('.highlight'), function (v, i) {
+                    hljs.highlightBlock(v);
+                });
+            }
+            },
+        ]
+    });
+</script>
+</body>
+</html>
