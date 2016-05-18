@@ -1,0 +1,9 @@
+@startuml
+interface UserRepository
+
+DependencyInjectionWithSpring *-- UserService : "depends on"
+DependencyInjectionWithSpring *-- UserRepository : "depends on"
+
+UserService *-- UserRepository : "depends on"
+UserRepository <|- LocalUserRepository
+@enduml

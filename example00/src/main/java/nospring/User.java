@@ -12,4 +12,9 @@ public class User {
         return this.name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

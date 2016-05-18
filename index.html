@@ -35,6 +35,13 @@
         </section>
 
         <section>
+            <h3>Raise your hands</h3>
+            <p class="fragment">Java or JVM-based language (Groovy, Clojure, Scala, Kotlin)</p>
+            <p class="fragment">Gradle or Maven</p>
+            <p class="fragment">Spring or Spring Boot</p>
+        </section>
+
+        <section>
             <h3>Recap: patterns and principles</h3>
         </section>
 
@@ -93,6 +100,14 @@ class Demo {
             <h3>Aspect oriented programming (AOP)</h3>
             <p class="fragment">Separate cross-cutting concerns</p>
             <p class="fragment">In plain English: reduce duplications</p>
+            <p class="fragment">Aspect = concern</p>
+        </section>
+
+        <section>
+          <h3>Examples for cross-cutting concerns</h3>
+          <p class="fragment">Logging</p>
+          <p class="fragment">Transaction management</p>
+          <p class="fragment">Authentication</p>
         </section>
 
         <section>
@@ -192,12 +207,56 @@ class BookController {
         </section>
 
         <section>
-          <h3>Spring isn't about web applications</h3>
+          <h3>Spring isn't only about web applications</h3>
           <p class="fragment">But a lot of people use it for</p>
         </section>
 
         <section>
+          <h3>Definition: Spring beans and JavaBean</h3>
+          <p class="fragment">Not the same!</p>
+          <p class="fragment">JavaBean: A plain Java class</p>
+          <p class="fragment">JavaBean: Getter and setter, public constructor, serializable</p>
+        </section>
+
+        <section>
+          <h3>JavaBean</h3>
+          <code data-trim data-noescape>
+              <pre>
+class JavaBean {
+  private final String name;
+
+  public void setName(String name) {
+      this.name = name;
+  }
+
+  public void getName() {
+    return name;
+  }
+}
+  </pre>
+          </code>
+        </section>
+
+        <section>
+          <h3>Sprint bean</h3>
+          <p class="fragment">Object instance managed by the Spring IoC container</p>
+        </section>
+
+        <section>
+          <h3>Example: DI with Spring Boot</h3>
+          <p><code>@Bean</code>, <code>@Autowired</code> and <code>@PostConstruct</code></p>
           <p><a href="https://github.com/JanAhrens/spring-boot-intro/tree/gh-pages/example00/" target="_blank">example00/</a></p>
+        </section>
+
+        <section>
+          <h3>Dependency graph</h3>
+          <img src="example00/dependencies.png">
+        </section>
+
+        <section>
+          <h3>Further reading</h3>
+          <p><a target="_blank" href="https://start.spring.io">start.spring.io</a></p>
+          <p><a target="_blank" href="https://docs.spring.io/spring-boot/docs/current/reference/html/index.html">docs.spring.io/spring-boot/docs/current/reference/html</a></p>
         </section>
     </div>
 </div>
