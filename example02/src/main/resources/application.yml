@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://docker:5442/postgres
+    username: postgres
+    password: mysecretpassword
+
+  # Warning: This is dangerous, especially for production databases.
+  # It will always drop the database.
+  # In real projects you should use a migration mechanism like Flyway
+  jpa.hibernate.ddl-auto: create-drop
+
+  # Log all SQL statements
+  show-sql: true
+
+management:
+    port: 7002
+    address: 127.0.0.1
