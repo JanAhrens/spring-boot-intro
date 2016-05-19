@@ -8,14 +8,14 @@ public class CreateUserAPIRequest implements CreateUserRequest {
 
   @NotBlank
   @Length(max = 10)
-  private String username;
+  private String name;
 
   public String getUsername() {
-    return username;
+    return name;
   }
 
   public void setUsername(String username) {
-    this.username = username;
+    this.name = username;
   }
 
 }

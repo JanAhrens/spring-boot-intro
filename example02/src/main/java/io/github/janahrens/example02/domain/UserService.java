@@ -1,6 +1,5 @@
 package io.github.janahrens.example02.domain;
 
-import io.github.janahrens.example02.api.CreateUserAPIRequest;
 import io.github.janahrens.example02.db.entity.User;
 import io.github.janahrens.example02.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -32,7 +32,7 @@ public class UserService {
     return savedUser.getId();
   }
 
-  public User getUser(Long userId) {
-    return userRepository.findOne(userId);
+  public Optional<User> getUser(Long userId) {
+    return Optional.ofNullable(userRepository.findOne(userId));
   }
 }

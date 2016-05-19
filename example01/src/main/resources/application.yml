@@ -6,5 +6,3 @@ spring:
     url: jdbc:postgresql://docker:5432/postgres
     username: postgres
     password: mysecretpassword
-
-spring.jpa.hibernate.ddl-auto: create-drop

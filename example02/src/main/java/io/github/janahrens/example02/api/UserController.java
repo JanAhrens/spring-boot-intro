@@ -43,11 +43,11 @@ public class UserController {
 
   @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> show(@PathVariable Long userId) {
-    User u= userService.getUser(userId);
-    if (u == null) {
+    Optional<User> u = userService.getUser(userId);
+    if (!u.isPresent()) {
       return ResponseEntity.notFound().build();
     } else {
-      return ResponseEntity.ok(new UserApiResponse(u));
+      return ResponseEntity.ok(new UserApiResponse(u.get()));
     }
   }
 
