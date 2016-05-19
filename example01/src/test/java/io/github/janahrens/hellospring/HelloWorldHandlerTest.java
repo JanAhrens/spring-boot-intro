@@ -6,23 +6,23 @@ import org.junit.Before;
 import org.junit.Test;
 import ratpack.test.handling.RequestFixture;
 
-public class HelloWorldServiceTest {
+public class HelloWorldHandlerTest {
 
-  private HelloWorldService helloWorldService;
+  private HelloWorldHandler helloWorldHandler;
 
   private MockLogService mockLogService;
 
   @Before
   public void setup() {
     mockLogService = new MockLogService();
-    helloWorldService = new HelloWorldService(mockLogService);
+    helloWorldHandler = new HelloWorldHandler(mockLogService);
   }
 
   @Test
   public void handleAddsAnEntry() throws Exception {
     Assert.assertEquals(0, mockLogService.addEntryCounter);
 
-    RequestFixture.handle(helloWorldService, action -> action.uri("/"));
+    RequestFixture.handle(helloWorldHandler, action -> action.uri("/"));
 
     Assert.assertEquals(1, mockLogService.addEntryCounter);
   }

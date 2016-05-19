@@ -9,12 +9,12 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Service
-public class HelloWorldService implements Handler {
+public class HelloWorldHandler implements Handler {
 
   private final LogService logService;
 
   @Autowired
-  public HelloWorldService(LogService logService) {
+  public HelloWorldHandler(LogService logService) {
     this.logService = logService;
   }
 
