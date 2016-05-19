@@ -22,9 +22,9 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public long createUser(CreateUserRequest createUserAPIRequest) {
+  public long createUser(CreateUserRequest createUserRequest) {
     User u = new User();
-    u.setName(createUserAPIRequest.getUsername());
+    u.setName(createUserRequest.getUsername());
     User savedUser = userRepository.saveAndFlush(u);
     return savedUser.getId();
   }
