@@ -7,6 +7,7 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter'
 
   compile 'io.ratpack:ratpack-spring-boot:1.1.1'
+  testCompile 'io.ratpack:ratpack-test:1.1.1'
 
   compile 'org.springframework.boot:spring-boot-starter-jdbc'
   runtime 'org.postgresql:postgresql:9.4.1208'

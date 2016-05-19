@@ -1,2 +1,5 @@
-spring.datasource.url: jdbc:postgresql://docker:5433/postgres
 ratpack.port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://docker:5432/postgres

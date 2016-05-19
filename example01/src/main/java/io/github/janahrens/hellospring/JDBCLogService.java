@@ -12,22 +12,27 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-public class DatabaseService {
+public class JdbcLogService implements LogService {
+
+  private final JdbcTemplate jdbcTemplate;
 
   @Autowired
-  private JdbcTemplate jdbcTemplate;
+  public JdbcLogService(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
   @PostConstruct
   public void init() {
-    jdbcTemplate.execute("DROP TABLE counter");
-    // poor mans migration mechanism
+    // poor man's database migration mechanism
     jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS counter(id VARCHAR(36), created_at TIMESTAMP)");
   }
 
+  @Override
   public List<Map<String, Object>> getEntries() {
     return jdbcTemplate.queryForList("SELECT id, created_at FROM counter");
   }
 
+  @Override
   public void addEntry(Timestamp time) {
     jdbcTemplate.execute("INSERT INTO counter VALUES(?, ?)", (PreparedStatement ps) -> {
       ps.setString(1, UUID.randomUUID().toString());

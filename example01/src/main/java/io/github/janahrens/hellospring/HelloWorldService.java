@@ -11,12 +11,16 @@ import java.util.Date;
 @Service
 public class HelloWorldService implements Handler {
 
+  private final LogService logService;
+
   @Autowired
-  DatabaseService databaseService;
+  public HelloWorldService(LogService logService) {
+    this.logService = logService;
+  }
 
   @Override
   public void handle(Context ctx) throws Exception {
-    databaseService.addEntry(new Timestamp(new Date().getTime()));
+    logService.addEntry(new Timestamp(new Date().getTime()));
     ctx.render("Hello World.");
   }
 
